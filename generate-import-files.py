@@ -3,6 +3,7 @@ import argparse
 from openpyxl import load_workbook
 import json
 import re
+from path import path
 
 def create_fresh_device_import_dict():
 
@@ -368,21 +369,21 @@ def main():
     if grey_net == True: network = "grey"
 
     # Write data to JSON files
-    path = f"C:\\Users\\caddem01\\OneDrive - BBC\\BBC\\Code\\Python Code\\netbox-cmn-import-script\\uploads\\{network}\\"
+    save_path = f"{path}\\{network}\\"
 
     # Save the device import JSON
     save_file_name = f"{site}_{network}_device_import.json"
-    with open(path + save_file_name, "w") as open_file:
+    with open(save_path + save_file_name, "w") as open_file:
         json.dump(device_json_list, open_file, indent=2) # pretty JSON file
 
     # Save the device interface import JSON
     save_file_name = f"{site}_{network}_int_import.json"
-    with open(path + save_file_name, "w") as open_file:
+    with open(save_path + save_file_name, "w") as open_file:
         json.dump(int_json_list, open_file, indent=2) # pretty JSON file
 
     # Save the interface IP address import JSON
     save_file_name = f"{site}_{network}_ip_import.json"
-    with open(path + save_file_name, "w") as open_file:
+    with open(save_path + save_file_name, "w") as open_file:
         json.dump(ip_json_list, open_file, indent=2) # pretty JSON file
 
 if __name__ == "__main__":
