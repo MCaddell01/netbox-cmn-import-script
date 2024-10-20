@@ -1,3 +1,4 @@
 # Exclude all CMN Configuration Data files
 *.xlsx
 uploads
+path.py
